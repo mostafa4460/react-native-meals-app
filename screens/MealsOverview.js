@@ -1,10 +1,10 @@
+import { useLayoutEffect } from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import Meal from "../components/Meal";
-import { MEALS } from "../data/dummy-data";
+import { MEALS, CATEGORIES } from "../data/dummy-data";
 
-const MealsOverview = ({ route }) => {
+const MealsOverview = ({ route, navigation }) => {
   const { categoryId } = route.params;
-
   const displayedMeals = MEALS.filter((meal) =>
     meal.categoryIds.includes(categoryId)
   );
@@ -18,6 +18,12 @@ const MealsOverview = ({ route }) => {
       affordability={item.affordability}
     />
   );
+
+  /* like useEffect, but will run before JSX renders */
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find((category) => category.id === categoryId)?.title;
+    navigation.setOptions({ title: categoryTitle }); 
+  }, [categoryId, navigation]);
 
   return (
     <View style={styles.container}>
