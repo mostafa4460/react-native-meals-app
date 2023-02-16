@@ -7,7 +7,7 @@ const Categories = ({ navigation }) => {
     <CategoryTile
       title={item.title}
       color={item.color}
-      onPress={() => navigation.navigate("MealsOverview")}
+      onPress={() => navigation.navigate("MealsOverview", { categoryId: item.id })}
     />
   );
 
