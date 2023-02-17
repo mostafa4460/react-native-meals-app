@@ -19,15 +19,15 @@ const MealDetails = ({ route, navigation }) => {
     affordability,
   } = selectedMeal;
 
-  const handleHeaderBtnPress = () => console.log("Pressed!");
-
   useLayoutEffect(() => {
+    const handleHeaderBtnPress = () => console.log("Pressed!");
+
     navigation.setOptions({
       headerRight: () => (
         <IconButton icon="star" color="white" onPress={handleHeaderBtnPress} />
       ),
     });
-  }, [navigation, handleHeaderBtnPress]);
+  }, [navigation]);
 
   return (
     <ScrollView style={styles.rootContainer}>
