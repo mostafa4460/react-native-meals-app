@@ -6,27 +6,33 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
+import MealDetails from "./MealDetails";
 
-const Meal = ({ title, imageUrl, duration, complexity, affordability }) => {
+const Meal = ({
+  title,
+  imageUrl,
+  duration,
+  complexity,
+  affordability,
+  onPress,
+}) => {
   return (
     <View style={styles.mealOuterContainer}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => (pressed ? styles.mealPressed : null)}
+        onPress={onPress}
       >
         <View style={styles.mealInnerContainer}>
           <View>
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-
-          <View style={styles.details}>
-            <Text style={styles.detailsItem}>{duration}m</Text>
-            <Text style={styles.detailsItem}>{complexity.toUpperCase()}</Text>
-            <Text style={styles.detailsItem}>
-              {affordability.toUpperCase()}
-            </Text>
-          </View>
+          <MealDetails
+            duration={duration}
+            complexity={complexity}
+            affordability={affordability}
+          />
         </View>
       </Pressable>
     </View>
@@ -63,15 +69,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     margin: 8,
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
-  },
-  detailsItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
 });
