@@ -16,13 +16,16 @@ const MealsOverview = ({ route, navigation }) => {
       duration={item.duration}
       complexity={item.complexity}
       affordability={item.affordability}
+      onPress={() => navigation.navigate("MealsDetails", { mealId: item.id })}
     />
   );
 
   /* like useEffect, but will run before JSX renders */
   useLayoutEffect(() => {
-    const categoryTitle = CATEGORIES.find((category) => category.id === categoryId)?.title;
-    navigation.setOptions({ title: categoryTitle }); 
+    const categoryTitle = CATEGORIES.find(
+      (category) => category.id === categoryId
+    )?.title;
+    navigation.setOptions({ title: categoryTitle });
   }, [categoryId, navigation]);
 
   return (
