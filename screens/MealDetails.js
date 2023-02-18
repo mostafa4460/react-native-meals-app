@@ -20,7 +20,7 @@ const MealDetails = ({ route, navigation }) => {
   } = selectedMeal;
 
   useLayoutEffect(() => {
-    const handleHeaderBtnPress = () => console.log("Pressed!");
+    const handleHeaderBtnPress = () => navigation.navigate("Favorites");
 
     navigation.setOptions({
       headerRight: () => (
