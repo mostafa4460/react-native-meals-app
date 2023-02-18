@@ -51,7 +51,11 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <StackScreen name="MealsOverview" component={MealsOverview} />
-          <StackScreen name="MealsDetails" component={MealDetails} />
+          <StackScreen
+            name="MealsDetails"
+            component={MealDetails}
+            options={{ title: "About the Meal" }}
+          />
         </StackNavigator>
       </NavigationContainer>
     </>
