@@ -8,7 +8,9 @@ import Categories from "./screens/Categories";
 import MealsOverview from "./screens/MealsOverview";
 import MealDetails from "./screens/MealDetails";
 import Favorites from "./screens/Favorites";
-import FavoritesProvider from "./store/context/favorites-context";
+// import FavoritesProvider from "./store/context/favorites-context";
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 const { Navigator: StackNavigator, Screen: StackScreen } =
   createNativeStackNavigator();
@@ -53,7 +55,8 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <FavoritesProvider>
+      {/* <FavoritesProvider> */}
+      <Provider store={store}>
         <NavigationContainer>
           <StackNavigator
             screenOptions={{
@@ -75,7 +78,8 @@ export default function App() {
             />
           </StackNavigator>
         </NavigationContainer>
-      </FavoritesProvider>
+      </Provider>
+      {/* </FavoritesProvider> */}
     </>
   );
 }
